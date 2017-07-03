@@ -1,0 +1,8 @@
+== Ansible projects
+
+=== OhMyZsh
+
+Auto installs ohmyzsh terminal plugin. You will find below the avaiblable options list:
++ user: The user for whom the plugin will be installed for
++ theme: The ohmyzsh theme name, as listed https://github.com/robbyrussell/oh-my-zsh/wiki/Themes[here]
+
