@@ -1,0 +1,5 @@
+---
+# Do not use ansible_user_id to avoid having 'root' user when become:yes
+user: "{{ zsh_user | default(lookup('env','USER')) }}"
+theme: "{{ zsh_theme | default('fino-time') }}"
+isDebug: "{{ debug | default(false) }}"

@@ -1,0 +1,26 @@
+alias lla='ls -al'
+alias ll='ls -lh'
+
+# Global aliases -- These do not have to be
+# at the beginning of the command line.
+alias -g M='|more'
+alias -g H='|head'
+alias -g T='|tail'
+alias -g L='|less'
+
+# List only directories and symbolic
+# links that point to directories
+alias lsd='ls -ld *(-/DN)'
+
+# List only file beginning with "."
+alias lsa='ls -ld .*'
+
+# Package manager
+alias install='sudo apt-get install'
+alias search='apt-cache search'
+alias show='apt-cache show'
+alias remove='sudo apt-get remove'
+alias purge='sudo apt-get purge'
+alias update='sudo apt-get update'
+alias dist-upgrade='sudo apt-get dist-upgrade'
+

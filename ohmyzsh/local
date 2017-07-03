@@ -1,0 +1,3 @@
+#ansible-playbook -i local -K ohmyzsh.yml
+
+localhost ansible_connection=local

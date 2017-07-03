@@ -1,0 +1,43 @@
+---
+- name: Install git and zsh and curl
+  apt: name={{ item }} state=latest update_cache=yes
+  become: yes
+  with_items:
+    - git
+    - zsh
+    - git-core
+    - curl
+  tags: ohmyzsh
+
+- name: Install RVM
+  shell: "{{item}}"
+  become: yes
+  with_items:
+    - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    - curl -sSL https://get.rvm.io | sudo bash -s stable
+  tags: ohmyzsh
+
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{user}}/.oh-my-zsh
+  become: yes
+  tags: ohmyzsh
+
+- name: remove standard zshrc
+  file: path=/home/{{user}}/.zshrc state=absent
+  become: yes
+  tags: ohmyzsh
+
+- name: deploy .zshrc
+  template: src=templates/zshrc.j2 dest=/home/{{user}}/.zshrc owner={{user}}
+  become: yes
+  tags: ohmyzsh
+
+- name: copy bash aliases
+  copy: src=files/bash_aliases dest=/home/{{user}}/.bash_aliases
+  become: yes
+  tags: ohmyzsh
+
+- name: Set zsh as default shell for user {{ user }}
+  user: name={{user}} shell=/bin/zsh
+  become: yes
+  tags: ohmyzsh

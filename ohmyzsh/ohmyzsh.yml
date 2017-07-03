@@ -1,0 +1,5 @@
+# Do not add the 'become: yes' prop, this role needs to be launched as basic user, or requires use of 'zsh_user' var
+- hosts: all
+  roles:
+    - oh-my-zsh
+  tags: shell
